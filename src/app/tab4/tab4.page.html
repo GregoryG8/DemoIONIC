@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 4
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 4</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h1>{{hero.name}}</h1>
+  <div>
+    <label for="name">Nombre: </label>
+    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+  
+  <h2>Otros Estudiantes</h2>
+    <ul class="heroes">
+      <li *ngFor="let hero of estudiantes">
+        <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
+          <span class="badge">{{hero.id}}</span>
+          <span class="name">{{hero.name}}</span>
+        </button>
+      </li>
+    </ul>
+  
+  <div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} Detalles</h2>
+    <div>id: {{selectedHero.id}}</div>
+    <div>
+      <label for="hero-name">Nombre de estudante: </label>
+      <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+    </div>
+  </div>
+
+ 
+
+  <app-explore-container></app-explore-container>
+</ion-content>
