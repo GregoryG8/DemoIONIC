@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from "../tab4/hero";
-import { ESTUDIANTES } from "../tab4/estudiantes";
+import { MensajeService } from "../mensaje.service";
 import { HeroService } from "../hero.service";
 
 @Component({
@@ -20,15 +20,18 @@ export class Tab4Page implements OnInit {
   
   onSelect(hero: Hero): void{
     this.selectedHero = hero;
+    this.mensajeService.add(`Seleccionó al estudiante con id = ${hero.id}`);
   }
 
-  constructor() {
-    
-   }
+  constructor(private heroService: HeroService, private mensajeService: MensajeService) {}
+
+  getEstudiantes(): void{
+    this.estudiantes = this.heroService.getEstudiantes();
+  }
 
 
   ngOnInit(): void {
-    
+    this.getEstudiantes();
   }
 
 }
