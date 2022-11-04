@@ -19,7 +19,7 @@
     <input id="name" [(ngModel)]="hero.name" placeholder="name">
   </div>
   
-  <h2>Otros Estudiantes</h2>
+  <h2>Otros Estudiantes: </h2>
     <ul class="heroes">
       <li *ngFor="let hero of estudiantes">
         <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
